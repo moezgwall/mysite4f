@@ -2,10 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Re-ImperialSite4F</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yanguer/homestek</title>
+  <meta name="description" content=" backend developer (Node, Express, TypeScript) based in Tunisia. Projects, free software and contact." />
+  <meta property="og:title" content="backend developer" />
+  <meta property="og:description" content="Junior backend developer (Node, Express, TypeScript) based in Tunisia." />
+  <meta property="og:type" content="website" />
 
   <style>
+    @font-face {
+      font-family: "Iosevka";
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+      src: local("Iosevka Light"), local("Iosevka-Light"),
+           url("fonts/iosevka-light.woff2") format("woff2");
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -13,8 +26,9 @@
     }
 
     body {
-      background-color: #343541; 
-      font-family: Arial, sans-serif;
+      background-color: #FFFFFF;
+      font-family: "Iosevka", ui-monospace, Consolas, "Courier New", monospace;
+      font-weight: 300;
       position: relative;
       min-height: 100vh;
     }
@@ -23,7 +37,7 @@
       width: calc(100% - 60px);
       max-width: 1000px;
       margin: 20px auto;
-      background-color: #e8e9e3;
+      background-color: #FFFFFF;
       border: 2px solid black;
       padding: 10px 20px;
       display: flex;
@@ -37,50 +51,52 @@
     #header a {
       text-decoration: none;
       color: black;
-      font-weight: bold;
+      font-weight: 300;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    #header img {
-      width: 20px;
-      height: 20px;
+    #header a:hover {
+      text-decoration: underline;
     }
 
     #main {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: calc(100vh - 120px); 
       padding-bottom: 40px;
       position: relative;
       z-index: 5;
     }
 
     #context {
-      width: calc(100% - 60px); 
+      width: calc(100% - 60px);
       max-width: 1000px;
-      background-color: #e8e9e3; 
-      border: 2px solid black;
+      background-color: #FFFFFF;
+      border: 1px solid black;
       padding: 20px;
       text-align: center;
       position: relative;
       z-index: 5;
-  
     }
 
     #context h1 {
       font-size: 3em;
-      font-weight: bold;
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+
+    #context h2 {
+      font-size: 2em;
+      font-weight: 300;
       margin-bottom: 10px;
     }
 
     #context .label {
-      font-size: 1.8em;
+      font-size: 5em;
       margin-bottom: 20px;
     }
-
 
     hr {
       border: none;
@@ -88,439 +104,266 @@
       background-color: black;
       margin: 20px 0;
     }
-    p{
+
+    p {
       font-size: 1.6em;
     }
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
+    a {
+      color: #0057b7;
+    }
 
-.gallery img {
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-  border: 3px solid black;
-}
-
-
-    
     .spacer {
       height: 4em;
     }
 
-    .logo {
-      max-width: 200px;
-      margin: auto;
-    }
-
-
-    .side-button {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 80px;
-      height: 80px;
-      background-color: #e8e9e3;
-      border: 4px solid black;
-      font-weight: bold;
-      font-size: 1.1em;
-      cursor: pointer;
+    /* projects */
+    .projects {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      user-select: none;
-      z-index: 20;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      transition: background-color 0.3s ease;
-        display: none;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 700px;
+      margin: 20px auto 0;
+      text-align: left;
     }
 
-    .side-button:hover {
-      background-color: #4c89e4;
-        display: none;
+    .project {
+      border: 2px solid black;
+      padding: 12px 16px;
+      background-color: #e8e9e3;
     }
 
-    #left-btn {
-      left: 10px;
-      border-radius: 10px 0 0 10px;
+    .project h3 {
+      font-size: 1.4em;
+      font-weight: 300;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    #right-btn {
-      right: 10px;
-      border-radius: 0 10px 10px 0;
+    .project .status {
+      font-size: 0.8em;
+      border: 1px solid black;
+      padding: 0 8px;
+      background-color: #FFFFFF;
     }
 
-  #penguin {
-  position: fixed;
-  bottom: 10px;
-  left: 0;
-  width: 100px;
-  height: auto;
-  z-index: 100;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-.image-wrapper {
-  width: 300px;
-  height: 200px;
-  border: 3px solid black;
-  overflow: hidden;
-}
+    .project .status.active {
+      background-color: #f0fda8;
+    }
 
-.image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .project p {
+      font-size: 1.1em;
+      margin: 6px 0;
+    }
 
-.angela-wrapper img {
-  filter: blur(10px);
-}
-img[src="angela.jpg"] {
-  filter: blur(50px);
-  
-}
-.fsf-banner {
-  margin: 30px auto;
-  padding: 20px;
-  max-width: 600px;
-  background-color: #f0fda8;
-  border: 4px solid black;
-  text-align: center;
-}
+    .links {
+      font-size: 1.4em;
+      line-height: 1.8;
+    }
 
-.fsf-text {
-  font-size: 1.3em;
-  font-weight: bold;
-  color: black;
-  margin-bottom: 10px;
-}
+    .fsf-banner {
+      margin: 30px auto;
+      padding: 20px;
+      max-width: 600px;
+      background-color: #f0fda8;
+      border: 4px solid black;
+      text-align: center;
+    }
 
-.fsf-link {
-  font-size: 1.1em;
-  font-weight: bold;
-  color: #0057b7;
-  text-decoration: none;
-}
+    .fsf-text {
+      font-size: 1.3em;
+      font-weight: 300;
+      color: black;
+      margin-bottom: 10px;
+    }
 
-.fsf-link:hover {
-  text-decoration: underline;
-  color: #003b80;
-}
+    .fsf-banner img {
+      max-width: 100%;
+    }
 
-/* existing styles above */
+    .barcode-box svg {
+      max-width: 100%;
+      height: auto;
+    }
 
-@media (max-width: 768px) {
-  #header {
-    width: calc(100% - 40px);
-    max-width: 100%;
-    flex-wrap: wrap;
-    gap: 15px;
-    padding: 10px 10px;
-  }
+    .barcode-box a {
+      font-size: 1.3em;
+    }
 
-  #header a {
-    font-size: 1em;
-    gap: 5px;
-  }
+    .footer {
+      font-size: 1em;
+      margin-top: 10px;
+    }
 
-  #header img {
-    width: 16px;
-    height: 16px;
-  }
+    #penguin {
+      position: fixed;
+      bottom: 10px;
+      left: 0;
+      width: 100px;
+      height: auto;
+      z-index: 100;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
 
-  #main {
-    min-height: auto;
-    padding: 20px 10px 40px;
-  }
+    @media (max-width: 768px) {
+      #header {
+        width: calc(100% - 40px);
+        max-width: 100%;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 10px;
+      }
 
-  #context {
-    width: calc(100% - 20px);
-    max-width: 100%;
-    padding: 15px;
-  }
+      #main {
+        padding: 20px 10px 40px;
+      }
 
-  #context h1 {
-    font-size: 2em;
-  }
+      #context {
+        width: calc(100% - 20px);
+        max-width: 100%;
+        padding: 15px;
+      }
 
-  #context .label {
-    font-size: 1.3em;
-  }
+      #context h1 { font-size: 2em; }
+      #context h2 { font-size: 1.5em; }
+      #context .label { font-size: 1.3em; }
+      p { font-size: 1.2em; }
+      .links { font-size: 1.2em; }
+      #penguin { width: 60px; }
+    }
 
-  p {
-    font-size: 1.2em;
-  }
-
-  .gallery {
-    gap: 10px;
-  }
-
-  .gallery img, 
-  .image-wrapper {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-
-  .side-button {
-    width: 60px;
-    height: 60px;
-    font-size: 0.9em;
-  }
-
-  #penguin {
-    width: 60px;
-  }
-}
-
-@media (max-width: 400px) {
-  #header a {
-    font-size: 0.9em;
-  }
-
-  #context h1 {
-    font-size: 1.6em;
-  }
-
-  #context .label {
-    font-size: 1em;
-  }
-
-  p {
-    font-size: 1em;
-  }
-
-  .side-button {
-    width: 50px;
-    height: 50px;
-    font-size: 0.8em;
-  }
-
-  #penguin {
-    width: 50px;
-  }
-  
-}
-
-
-
-
-
-
+    @media (max-width: 400px) {
+      #context h1 { font-size: 1.6em; }
+      #context h2 { font-size: 1.3em; }
+      #context .label { font-size: 1em; }
+      p { font-size: 1em; }
+      .links { font-size: 1em; }
+      #penguin { width: 50px; }
+    }
   </style>
 </head>
 <body>
 
-  
-  <div id="header">
-    <a href="https://www.facebook.com/#/"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" />Facebook</a>
-    <a href="https://www.instagram.com/#/"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" />Instagram</a>
-<!--     <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" />YouTube</a>
- -->
-    <a href="github.com/moezgwall"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" />GitHub</a>
-    <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" />Twitter</a>
+  <div id="header">     
+   <a href="#numbers">numbers</a>
+    <a href="#contact">contact</a>
   </div>
 
-  
   <div id="main">
     <div id="context">
-      <h1>gWall: God's Chosen HOOMAN</h1>
-      <div class="label">"never mind"</div>
+      
+  
+      
+      <h1> list of people</h1> 
+      <label> web is better with  </label>
+      <p> <label> tsoding (rexim) :<a href="https://www.twitch.tv/tsoding">twitch</a></p>
+      <p> <label> bisqwit (Joel Yliluoma) :<a href="https://bisqwit.iki.fi/">website</a></p>
 
       <hr />
 
-     <div class="gallery">
-  <img src="assets\RICHARD.jpg" alt="Mr.Richard">
-  <img src="assets\KARLSMARX.jpg" alt="Mr.Karl">
-  <img src="assets\LINUS.jpg" alt="Mr.Linus">
-  <img src="assets\TEREYDAVIS.jpg" alt="King.Terry">
-  <img src="assets\BOOBYFISHER.jpg" alt="Mr.Bobby">
-  <div class="image-wrapper angela-wrapper">
-  <img src="angela.jpg" alt="mommy angela">
-</div>
-</div>
-
+      <section id="numbers">
+        <h1>the zeus in numbers</h1>
+        <p>
+          Active projects: 2 <br />
+          Finished projects: 1 <br />
+          Commits in 2026: 346 <br />
+          Pull requests: 6 <br />
+          Issues closed: 2 <br />
+          --- <br />
+          Next discord session: NOT YET <br />
+          <small>numbers last updated: October 2026</small>
+        </p>
+      </section>
 
       <hr />
 
-      <p>What you’re seeing now are the people who inspired me to become who I am today.
-      Enjoy watching them, and maybe take some time to Google or learn more about them.
-      It’s not very satisfying to look at random unknown people, but if you care about freedom and science,
-      you’ll appreciate getting to know these figures.
-      The last slide is a gift — from the author, gWall.
-      </p>
-
-      <div class="spacer"></div>
-      <h1>informations about me</h1>
-      <p>
-        Q : what is your age ?
-        A : 26
-        <br>
-        Q : relegion ?
-        A : muslim 
-        <br>
-        Q : programming language you master ?
-        A : C/CPP/JAVASCRIPT/TYPESCRIPT/JAVA and RUST
-        <br>
-        Q : OS ?
-        A : GNU/Linux void / windows (for games)
-        <br>
-        Q : any hobbies ?
-        A : reading books,video games and playing with rabbits 
-        <br>
-        Q : IDE ?
-        A : vim & vscode
-        <br>
-        Q : typing speed ?
-        A : BEST : 71 wpm , avg : 63 (source : typeracer)
-        <br>
-        Q : favorite football team ?
-        A : messi 
-        <br>
-        Q : best board game ?
-        A : chess 
-        <br>
-        Q : chess elo?
-        A : rapid 1430
-        <br>
-        Q : how tall are you ?
-        A : 1.81cm
-        <br>
-        Q : RUSSIA OR USA ?
-        A : i hate imperialism 
-        <br>
-        Q : best movie  ?
-        A : harry potter , dog purpose 
-        <br>
-        Q : best video game?
-        A : counter strike 
-        <br>
-        Q : what is your type?
-        A : depends  
-        <br>
-        Q : how to learn new things ?
-        A : copy-paste / understand / re-implement / re-use 
-
-
-
-      </p>
      
 
-        <div class="spacer"></div>
+      <section id="links">
+              <h1>important </h1> 
+              <p>
+                any UI/UX expert,you can contact me via email. 
+                Start your email with "expert:to:zeus:important!!" else it will be ignored.<br>
+              </p> 
+      </section>
 
-      <!--<img class="logo" src="USSR.png" width="75" height="75" alt="Logo"/>-->
+      <hr/>
+       <h1>free software movement</h1> 
+      <div class="fsf-banner">
+        <p class="fsf-text">ABOUT FREE SOFTWARE MOVEMENT</p>
+        <a href="https://www.fsf.org/about/what-is-free-software" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/FSF_Logo.svg" alt="Free Software Foundation logo: support free software" />
+        </a>
+      </div>
 
- <div class="fsf-banner">
-  <p class="fsf-text">ABOUT FREE SOFTWARE MOVEMENT</p>
-  <a href="https://www.fsf.org/about/what-is-free-software" target="_blank" rel="noopener noreferrer">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/FSF_Logo.svg" alt="Support Free Software" />
-  </a>
-</div>
+      <hr />
 
+      <section id="contact">
+        <h1>contact</h1>
+        <div class="barcode-box">
+          <svg id="email-barcode" role="img" aria-label="Code 128 barcode of the email address moezchroufa111@gmail.com"></svg><br />
+          <a href="mailto:moezchroufa111@gmail.com">moezchroufa111@gmail.com</a>
+        </div>
+        <p class="footer">last updated: October 2026</p>
+      </section>
 
-<!-- <div class="message-box">
-    <label for="message">Write a message:</label><br />
-    <textarea id="message" name="message" rows="4" cols="50" placeholder="Type your message here..." disabled></textarea><br />
-    <button onclick="sendMessage()">Send</button>
-</div> -->
-
-    
+    </div>
   </div>
 
-  <!-- Side buttons -->
-  <button id="left-btn" class="side-button">🔴</button>
-  <button id="right-btn" class="side-button">🔵</button>
-  <!-- penguin image--> 
-  <img src="party-dancing.gif" id="penguin" alt="Dancing Penguin">
+  <img src="party-dancing.gif" id="penguin" alt="" aria-hidden="true" />
 
-
-  <!-- Audio element -->
-  <audio id="moaning" src="8694-moan-earrape.mp3" preload="auto"></audio>
-  <audio id="farting" src="proud-fart-288263.mp3" preload="auto"></audio>
-
-
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
   <script>
-  const sound1 = document.getElementById('moaning');
-  const sound2 = document.getElementById('farting');
-
-  document.getElementById('left-btn').addEventListener('click', () => {
-    sound2.pause();
-    sound1.currentTime = 0;
-    sound1.play();
-  });
-
-  document.getElementById('right-btn').addEventListener('click', () => {
-    sound1.pause();
-    sound2.currentTime = 0;
-    sound2.play();
-  });
-
-  const penguin = document.getElementById('penguin');
-
-let direction = 1; 
-let posX = 0;
-let penguinInterval;
-
-
-function startPenguinMovement() {
-  penguin.style.opacity = '1';
-
-  penguinInterval = setInterval(() => {
-    const maxX = window.innerWidth - penguin.offsetWidth - 10; 
-    posX += 10 * direction;
-
-    if (posX >= maxX || posX <= 0) {
-      direction *= -1; 
+    if (window.JsBarcode) {
+      JsBarcode("#email-barcode", "moezchroufa111@gmail.com", {
+        format: "CODE128",
+        displayValue: false,
+        height: 60,
+        width: 1.5,
+        margin: 10,
+        lineColor: "#000000",
+        background: "#FFFFFF"
+      });
     }
 
-    penguin.style.left = posX + 'px';
-  }, 50); 
-}
+    const penguin = document.getElementById('penguin');
+    let direction = 1;
+    let posX = 0;
+    let penguinInterval;
 
+    function startPenguinMovement() {
+      penguin.style.opacity = '1';
+      penguinInterval = setInterval(() => {
+        const maxX = window.innerWidth - penguin.offsetWidth - 10;
+        posX += 10 * direction;
+        if (posX >= maxX || posX <= 0) {
+          direction *= -1;
+        }
+        penguin.style.left = posX + 'px';
+      }, 50);
+    }
 
-function stopPenguinMovement() {
-  clearInterval(penguinInterval);
-  penguin.style.opacity = '0';
-}
+    function stopPenguinMovement() {
+      clearInterval(penguinInterval);
+      penguin.style.opacity = '0';
+    }
 
+    function loopPenguin() {
+      startPenguinMovement();
+      setTimeout(() => {
+        stopPenguinMovement();
+        posX = 0;
+        penguin.style.left = '0px';
+      }, 20000);
+    }
 
-function loopPenguin() {
-  startPenguinMovement();
-
-  setTimeout(() => {
-    stopPenguinMovement();
-    posX = 0; // reset position
-    penguin.style.left = '0px';
-  }, 20000);
-}
-
-
-
- function sendMessage() {
-    const message = document.getElementById('message').value;
-
-    fetch('http://localhost:9696/api/send-message', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message })
-    });
-  }
-
-
-
-
-setInterval(loopPenguin, 30000);
-
-// Initial trigger
-loopPenguin();
- 
+    setInterval(loopPenguin, 30000);
+    loopPenguin();
   </script>
 </body>
 </html>
