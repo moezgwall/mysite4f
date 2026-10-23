@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yanguer/homestek</title>
+  <meta name="description" content=" backend developer (Node, Express, TypeScript) based in Tunisia. Projects, free software and contact." />
+  <meta property="og:title" content="backend developer" />
+  <meta property="og:description" content="Junior backend developer (Node, Express, TypeScript) based in Tunisia." />
+  <meta property="og:type" content="website" />
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="referrer" content="no-referrer">
+  
+  
+  <style>
+    @font-face {
+      font-family: "Iosevka";
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+      src: local("Iosevka Light"), local("Iosevka-Light"),
+           url("fonts/iosevka-light.woff2") format("woff2");
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      font-family: "Iosevka", ui-monospace, Consolas, "Courier New", monospace;
+      font-weight: 300;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    #header {
+      width: calc(100% - 60px);
+      max-width: 1000px;
+      margin: 20px auto;
+      background-color: #FFFFFF;
+      border: 2px solid black;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      align-items: center;
+      z-index: 10;
+      position: relative;
+    }
+
+    #header a {
+      text-decoration: none;
+      color: black;
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #header a:hover {
+      text-decoration: underline;
+    }
+
+    #main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 40px;
+      position: relative;
+      z-index: 5;
+    }
+
+    #context {
+      width: calc(100% - 60px);
+      max-width: 1000px;
+      background-color: #FFFFFF;
+      border: 1px solid black;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      z-index: 5;
+    }
+
+    #context h1 {
+      font-size: 3em;
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+
+    #context h2 {
+      font-size: 2em;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+
+    #context .label {
+      font-size: 5em;
+      margin-bottom: 20px;
+    }
+
+    hr {
+      border: none;
+      height: 4px;
+      background-color: black;
+      margin: 20px 0;
+    }
+
+    p {
+      font-size: 1.6em;
+    }
+
+    a {
+      color: #0057b7;
+    }
+
+    .spacer {
+      height: 4em;
+    }
+
+    /* projects */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 700px;
+      margin: 20px auto 0;
+      text-align: left;
+    }
+
+    .project {
+      border: 2px solid black;
+      padding: 12px 16px;
+      background-color: #e8e9e3;
+    }
+
+    .project h3 {
+      font-size: 1.4em;
+      font-weight: 300;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .project .status {
+      font-size: 0.8em;
+      border: 1px solid black;
+      padding: 0 8px;
+      background-color: #FFFFFF;
+    }
+
+    .project .status.active {
+      background-color: #f0fda8;
+    }
+
+    .project p {
+      font-size: 1.1em;
+      margin: 6px 0;
+    }
+
+    .links {
+      font-size: 1.4em;
+      line-height: 1.8;
+    }
+
+    .fsf-banner {
+      margin: 30px auto;
+      padding: 20px;
+      max-width: 600px;
+      background-color: #f0fda8;
+      border: 4px solid black;
+      text-align: center;
+    }
+
+    .fsf-text {
+      font-size: 1.3em;
+      font-weight: 300;
+      color: black;
+      margin-bottom: 10px;
+    }
+
+    .fsf-banner img {
+      max-width: 100%;
+    }
+
+    .barcode-box svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .barcode-box a {
+      font-size: 1.3em;
+    }
+
+    .footer {
+      font-size: 1em;
+      margin-top: 10px;
+    }
+
+    #penguin {
+      position: fixed;
+      bottom: 10px;
+      left: 0;
+      width: 100px;
+      height: auto;
+      z-index: 100;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    @media (max-width: 768px) {
+      #header {
+        width: calc(100% - 40px);
+        max-width: 100%;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 10px;
+      }
+
+      #main {
+        padding: 20px 10px 40px;
+      }
+
+      #context {
+        width: calc(100% - 20px);
+        max-width: 100%;
+        padding: 15px;
+      }
+
+      #context h1 { font-size: 2em; }
+      #context h2 { font-size: 1.5em; }
+      #context .label { font-size: 1.3em; }
+      p { font-size: 1.2em; }
+      .links { font-size: 1.2em; }
+      #penguin { width: 60px; }
+    }
+
+    @media (max-width: 400px) {
+      #context h1 { font-size: 1.6em; }
+      #context h2 { font-size: 1.3em; }
+      #context .label { font-size: 1em; }
+      p { font-size: 1em; }
+      .links { font-size: 1em; }
+      #penguin { width: 50px; }
+    }
+
+  #songs iframe {
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: none;
+}
+
+  #songs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+  </style>
+</head>
+<body>
+
+  <div id="header">     
+      <a href=".\index.html">home</a>
+  </div>
+
+  <div id="main">
+    <div id="context">
+      
+        <section id="songs">
+         <small> video of the week #055631125</small>
+            
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/jHLbL1Eg4gM?si=kfy9oeKSLRahqUEa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
+            
+        </section>     
+      </section>
+      <hr>
+     <section id="songs">
+         <small> video of the week #055631124</small>
+            
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qjWkNZ0SXfo?si=jGicrDkx1dLBFdj5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            
+        </section>     
+      </section>
+      <hr>
+       <section id="songs">
+         <small> video of the week #055631123</small>
+            
+           <iframe width="560" height="315" src="https://www.youtube.com/embed/4K8IEzXnMYk?si=Qz8U1lZwqVhvtVAm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
+        </section>     
+      </section>
+
+     
+
+     
+
+   
+      
+      
+  
+
+    </div>
+  </div>
+
+
+    
+</body>
+</html>
